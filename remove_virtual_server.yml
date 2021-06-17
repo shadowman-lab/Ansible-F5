@@ -41,7 +41,7 @@
 
   handlers:
     - name: IDM_update      
-      ipa_host:
+      community.general.ipa_host:
         name: "{{ virtual_server_fqdn }}"
         state: absent
         ipa_pass: "{{ IPA_PASS }}"
