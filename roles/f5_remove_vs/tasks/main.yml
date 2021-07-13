@@ -1,0 +1,30 @@
+- name: Setup provider
+  ansible.builtin.set_fact:
+    provider:
+    server: "{{ f5_ip }}"
+    user: "{{ f5_user }}"
+    password: "{{ f5_pass }}"
+    validate_certs: "no"
+
+- name: Setup fact for app server
+  ansible.builtin.set_fact:
+    virtual_server_fqdn: f5lb.shadowman.dev
+  when: virtual_server_name == "poolapp"
+
+- name: Delete Virtual Server
+  f5networks.f5_modules.bigip_virtual_server:
+    provider: "{{ provider }}"
+    name: "{{ virtual_server_name }}"
+    state: absent
+  notify: IDM_update
+
+- name: Delete Pool
+  f5networks.f5_modules.bigip_pool:
+    provider: "{{ provider }}"
+    name: "{{ pool_name }}"
+    state: absent
+
+- name: Save Running Config
+  f5networks.f5_modules.bigip_config:
+    provider: "{{ provider }}"
+    save: yes

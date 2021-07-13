@@ -3,30 +3,5 @@
   hosts: "{{ vm_name | default('all') }}"
   gather_facts: false
 
-  vars:
-    pool_name: https_pool
-
-  tasks:
-
-  - name: Setup provider
-    ansible.builtin.set_fact:
-     provider:
-      server: "{{ f5_ip }}"
-      user: "{{ f5_user }}"
-      password: "{{ f5_pass }}"
-      validate_certs: "no"
-
-  - name: Set facts if enabling appserver
-    ansible.builtin.set_fact:
-      pool_name: app_pool
-    when: inventory_hostname is match("appserver.*")
-  
-  - name: Enable Pool Members
-    f5networks.f5_modules.bigip_pool_member:
-      provider: "{{ provider }}"
-      state: "enabled"
-      host: "{{ ip_addr }}"
-      name: "{{ inventory_hostname }}"
-      port: "443"
-      pool: "{{ pool_name }}"
-    delegate_to: localhost
+  roles:
+    - f5_enable

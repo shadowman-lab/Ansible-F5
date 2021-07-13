@@ -1,0 +1,8 @@
+- name: IDM_update      
+  community.general.ipa_host:
+    name: "{{ virtual_server_fqdn }}"
+    state: absent
+    ipa_pass: "{{ IPA_PASS }}"
+    ipa_host: "{{ IPA_HOST }}"
+    ipa_user: "{{ IPA_USER }}"
+    update_dns: True
