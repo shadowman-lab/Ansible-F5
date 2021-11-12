@@ -3,4 +3,3 @@ collections:
   - name: f5networks.f5_modules
 
   - name: community.general
-    source: https://towerpah.shadowman.dev/api/galaxy/content/community/
