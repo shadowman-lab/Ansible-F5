@@ -7,6 +7,6 @@
     ipa_host: "{{ IPA_HOST }}"
     ipa_user: "{{ IPA_USER }}"
     state: present
-    force: yes
+    force: true
   delegate_to: localhost
-  become: no
+  become: false

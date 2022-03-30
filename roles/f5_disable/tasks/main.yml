@@ -5,7 +5,7 @@
     server: "{{ f5_ip }}"
     user: "{{ f5_user }}"
     password: "{{ f5_pass }}"
-    validate_certs: "no"
+    validate_certs: false
 
 - name: Set facts if enabling appserver
   ansible.builtin.set_fact:
