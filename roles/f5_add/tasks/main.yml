@@ -29,7 +29,7 @@
     provider: "{{ provider }}"
     name: "{{ pool_name }}"
     lb_method: "round-robin"
-    monitors: 
+    monitors:
       - "/Common/https_443"
     monitor_type: "and_list"
   delegate_to: localhost
@@ -68,5 +68,5 @@
       email_body: "{{ email_body }} Load Balancer: https://{{ virtual_server_fqdn }}"
       work_notes: "{{ work_notes }} [code]<a href='https://{{ virtual_server_fqdn }}'>Load Balancer</a>[/code]"
       expose_to_cloud_redhat_com_results: "{{ expose_to_cloud_redhat_com_results }} Load Balancer: https://{{ virtual_server_fqdn }}"
-  run_once: true      
+  run_once: true
   when: email_body is defined
