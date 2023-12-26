@@ -28,16 +28,16 @@
   f5networks.f5_modules.bigip_pool:
     provider: "{{ provider }}"
     name: "{{ pool_name }}"
-    lb_method: "round-robin"
+    lb_method: round-robin
     monitors:
-      - "/Common/https_443"
-    monitor_type: "and_list"
+      - /Common/https_443
+    monitor_type: and_list
   delegate_to: localhost
 
 - name: Add Pool Members
   f5networks.f5_modules.bigip_pool_member:
     provider: "{{ provider }}"
-    state: "present"
+    state: present
     host: "{{ ip_addr }}"
     name: "{{ inventory_hostname }}"
     port: "443"
@@ -50,9 +50,9 @@
     name: "{{ virtual_server_name }}"
     destination: "{{ virtual_server_ip }}"
     port: "443"
-    enabled_vlans: "all"
+    enabled_vlans: all
     pool: "{{ pool_name }}"
-    snat: "Automap"
+    snat: Automap
   delegate_to: localhost
   notify: IDM_update
 
