@@ -13,5 +13,11 @@
         "files.insertFinalNewline": true,
         "files.trimFinalNewlines": true,
         "files.trimTrailingWhitespace": true
-	}
+	},
+    "folders": [
+		{
+			"name": "ansible-f5",
+			"path": "/projects/ansible-f5"
+		}
+	]
 }
